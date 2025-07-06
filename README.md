@@ -19,3 +19,7 @@ cd web-scraping-demos
 ```bash
 pip install -r requirements.txt
 ```
+
+## Scripts
+
+[Aliexpress](aliexpress/aliexpress.md)
