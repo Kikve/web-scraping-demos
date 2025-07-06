@@ -10,9 +10,9 @@ Web-Scraping-Demos is a collection of Python scripts and notebooks that demonstr
 ## Getting Started
 
 1. Clone the repo:  
-   ```bash
-   git clone https://github.com/your-username/Web-Scraping-Demos.git
-   cd web-scraping-demos
+```bash
+git clone https://github.com/Kikve/web-scraping-demos.git
+cd web-scraping-demos
    ```
 
 2. Install dependencies:
