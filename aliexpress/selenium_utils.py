@@ -1,3 +1,7 @@
+# ====================
+# Selenium utils
+# ====================
+
 import logging
 from typing import Optional
 import re
@@ -21,18 +25,11 @@ from selenium.common.exceptions import (
 import time
 from typing import Tuple
 
+# ============================================================
+
 logger = logging.getLogger("myapp")
-logger.setLevel(logging.INFO)
 
-# 3) Add a handler just for “myapp”
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)  # show DEBUG+ on console
-fmt = logging.Formatter("%(levelname)s %(name)s: %(message)s")
-ch.setFormatter(fmt)
-logger.addHandler(ch)
-
-# 4) Prevent double‐logging (stop propagation up to the root logger)
-logger.propagate = False
+# ============================================================
 
 
 def get_driver(
@@ -235,7 +232,7 @@ def select_and_hover(driver: WebDriver, selector: str, retry: int = 2) -> bool:
 
 
 def parse_product_page_to_dict(
-    soup_product: BeautifulSoup, popup_class: str = "comet-v2-popover-content"
+    soup_product: BeautifulSoup, popup_class: str
 ) -> Tuple[bool, dict]:
     """
     Parses a product page popup table into a dictionary of key-value pairs.
@@ -354,7 +351,8 @@ def navigate_to(driver: WebDriver, url: str) -> bool:
     current_url = driver.current_url
     if current_url != url:
         logger.error(f"[navigate to] the page returned is not the same {current_url}")
-        return False
+        input("Press Return to continue")
+        navigate_to(driver, url)
     logger.info(f"[navigate to] page loaded {url}")
     return True
 
@@ -380,44 +378,3 @@ def get_info_seller(
         return (True, product_dict) if status else (False, {})
     else:
         return (False, {})
-
-
-User_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
-Query = "laptops"
-Main_Url = f"https://es.aliexpress.com/w/wholesale-{Query}.html"
-Card_class_component = "search-item-card-wrapper-gallery"
-Selector_product_popup = ".store-detail--title--qt8UBeq"
-Selector_product = "comet-v2-popover-content"
-
-driver = get_driver(User_agent)
-info = driver_info(driver)
-logger.warning(f"IP: {info['ip']}")
-if navigate_to(driver, Main_Url):
-    if scroll_end(driver):
-        main_soup = get_page_soup(driver)
-        cards_components = main_soup.find_all(class_=Card_class_component)
-        data = [card for status, card in map(card_to_dict, cards_components) if status]
-        logger.warning(f"all cards components loaded {len(data)}")
-
-        newdata = []
-
-        for index, product in enumerate(data):
-            logger.warning("looking for seller details" + f" {index=}")
-            status, info_seller = get_info_seller(
-                driver, product["url"], Selector_product_popup, Selector_product
-            )
-            product["seller_info"] = info_seller
-
-            (
-                logger.info("seller details added")
-                if status
-                else logger.error("seller details not added")
-            )
-            newdata.append(product)
-            logger.debug(f"main =>>  {product=}")
-            time.sleep(2)
-
-
-# driver = get_driver(User_agent)
-# navigate_to(driver, Main_Url)
-# scroll_end(driver)
