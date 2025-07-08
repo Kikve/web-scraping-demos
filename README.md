@@ -1,14 +1,19 @@
-# Web-Scraping-Demos
+# Web-Scraping Demos 
+*Python · Selenium · BeautifulSoup · pandas Web-Scraping-Demos
 
 [![Python](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/)
 
 
-Web-Scraping-Demos is a collection of Python scripts and notebooks that demonstrate how to extract, parse and process data from modern websites. Whether you’re dealing with static HTML, JavaScript‐rendered pages or large-scale crawls, you’ll find working examples that you can adapt to your own projects.
+Need to learn how to extract data from modern websites?
+This repo shows **three self-contained examples**—static HTML, infinite scroll,
+and pagination with filters—each exporting clean CSV/JSON.
+*Code is for educational purposes; always follow site Terms before scraping.*
 
 
 ## Table of Contents
 - [Quickstart](#quickstart)
-- [Available Scrapers](#available-scrapers)
+- [Demo Line-up](#available-scrapers)
+- [AliExpress Scrapper](#aliexpress-scrapper)
 - [Links & Contact](#links--contact)
 
 ---
@@ -31,19 +36,18 @@ python python -m aliexpress
 
 
 
-## Available Scrapers
-- [AliExpress Scrapper](#aliexpress-scrapper)
-  - Scrapes product name, price, URL, seller specs.
+## Demo Line-up
+| Demo | Target | Techniques | Key Output |
+|------|--------|------------|------------|
+| [AliExpress Scrapper](#aliexpress-scrapper) | Infinite-scroll product list | Selenium + dynamic waits | 4 columns (name, price, URL, seller) |
 
 ---
 
 
-## Detailed Scraper Sections
-
-###  AliExpress Scrapper
+##  AliExpress Scrapper
 **Scrapes AliExpress search results for product and seller data**
 
-#### What it does
+### What it does
 1. Launches Selenium ChromeDriver with configurable headless mode, user-agent, window size.
 2. Loads search results (e.g., "laptops"), scrolls to fetch all product cards.
 3. Extracts `product_name`, `price`, and `url` from each card.
@@ -51,16 +55,17 @@ python python -m aliexpress
 4. Visits each product page; hovers seller-info popup to scrape seller's info
 5. Outputs a structured CSV.
 
-#### Analysis & Results
+### Analysis & Results
 - **CSV:** `results/aliexpress.csv` with columns: `product_name`, `price`, `url`, `seller_info`.
 - **Notebook:** `notebooks/aliexpress_analysis.ipynb`:
   - Buckets prices into ranges (0–50, 51–100, 101–200, 200+).
   - Computes count.
   - Plots distribution chart.
 
-<img src="media/aliexpress_excel.png" width="350">
-<img src="media/aliexpress_console.png" width="350">
-<img src="media/range_prices_plot.png" width="350">
+<div align="center">
+  <img src="media/aliexpress_console.png" width="280">
+  <img src="media/aliexpress_excel.png"  width="280">
+</div>
 
 ## Links & Contact
 - **CSV Outputs:** [Results folder](https://github.com/Kikve/web-scraping-demos/tree/main/documents)
