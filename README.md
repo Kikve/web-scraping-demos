@@ -7,7 +7,6 @@
 Need to learn how to extract data from modern websites?
 This repo shows **three self-contained examples**—static HTML, infinite scroll,
 and pagination with filters—each exporting clean CSV/JSON.
-*Code is for educational purposes; always follow site Terms before scraping.*
 
 
 ## Table of Contents
