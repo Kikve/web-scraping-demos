@@ -56,9 +56,9 @@ python python -m aliexpress
   - Computes count.
   - Plots distribution chart.
 
-![](media/aliexpress_excel.png | width=250)
-![](media/aliexpress_console.png | width=250)
-![](media/range_prices_plot.png | width=250)
+<img src="media/aliexpress_excel.png" width="200">
+<img src="(media/aliexpress_console.png)" width="200">
+<img src="media/range_prices_plot.png" width="200">
 
 ## Links & Contact
 - **CSV Outputs:** [Results folder](https://github.com/Kikve/web-scraping-demos/tree/main/documents)
