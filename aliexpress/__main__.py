@@ -6,6 +6,7 @@ import logging
 from pandas import DataFrame
 import time
 from aliexpress.selenium_utils import (
+    get_driver_uc,
     get_driver,
     driver_info,
     navigate_to,
@@ -38,7 +39,7 @@ Selector_product_popup = ".store-detail--title--qt8UBeq"
 Selector_product = "comet-v2-popover-content"
 
 # initialize driver
-driver = get_driver(User_agent)
+driver = get_driver_uc(User_agent)
 info = driver_info(driver)
 logger.warning(f"IP: {info['ip']}")
 

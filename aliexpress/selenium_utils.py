@@ -3,6 +3,7 @@
 # ====================
 
 import logging
+import undetected_chromedriver as uc
 from typing import Optional
 import re
 from bs4 import BeautifulSoup
@@ -18,7 +19,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.webdriver import WebDriver as ChromeDriver
 from selenium.common.exceptions import (
-    TimeoutException,
     NoSuchElementException,
     WebDriverException,
 )
@@ -73,6 +73,42 @@ def get_driver(
         ) from e
 
     driver.set_page_load_timeout(30)
+
+    return driver
+
+
+def get_driver_uc(
+    user_agent: str,
+    window_size: Tuple[int, int] = (1200, 800),
+    headless: bool = False,
+    timeout: int = 30,
+) -> ChromeDriver:
+    """
+    Create an undetected-chromedriver Chrome WebDriver instance
+    (auto-manages the driver binary) with stealth patches.
+
+    Args:
+        user_agent: UA string to send.
+        window_size: (width, height)
+        headless: run in headless mode if True.
+        timeout: seconds to wait for page loads.
+
+    Returns:
+        Configured Chrome WebDriver.
+    """
+    options = uc.ChromeOptions()
+    if headless:
+        options.add_argument("--headless=new")
+    options.add_argument(f"--user-agent={user_agent}")
+    options.add_argument(f"--window-size={window_size[0]},{window_size[1]}")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+
+    try:
+        driver = uc.Chrome(options=options)
+
+    except Exception as e:
+        raise RuntimeError(f"[get_driver_uc] failed to start ChromeDriver") from e
+    driver.set_page_load_timeout(timeout)
 
     return driver
 
@@ -297,7 +333,7 @@ def card_to_dict(card_component: BeautifulSoup) -> Tuple[bool, dict]:
     url = link_tag.get("href", "").strip()
     product_name, price_text = [e.get_text(strip=True) for e in (name_tag, price_tag)]
 
-    price = extract_number(price_text)
+    stat_price, price = extract_number(price_text)
 
     logger.info(
         f"[card_to_dict] soup parsed to dict product_name={product_name[:20]} ... , {price=}"

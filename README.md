@@ -1,25 +1,70 @@
 # Web-Scraping-Demos
 
 Web-Scraping-Demos is a collection of Python scripts and notebooks that demonstrate how to extract, parse and process data from modern websites. Whether you’re dealing with static HTML, JavaScript‐rendered pages or large-scale crawls, you’ll find working examples that you can adapt to your own projects.
+[![Python](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/)
+[![Build Status](https://github.com/you/web-scraping-demos/actions/workflows/ci.yml/badge.svg)](https://github.com/you/web-scraping-demos/actions) 
+[![Coverage](https://img.shields.io/codecov/c/github/you/web-scraping-demos)](https://codecov.io/gh/you/web-scraping-demos)
 
-## Key Features
 
-- **BeautifulSoup**: Lightweight HTML parsing and data extraction  
-- **Selenium**: Browser automation for sites with heavy JavaScript, form fills, and interaction  
+## Table of Contents
+- [Quickstart](#quickstart)
+- [Available Scrapers](#available-scrapers)
+- [Links & Contact](#links--contact)
 
-## Getting Started
+---
 
-1. Clone the repo:  
+## Quickstart
+Clone the repository and install all dependencies:
+
 ```bash
-git clone https://github.com/Kikve/web-scraping-demos.git
+git clone https://github.com/you/web-scraping-demos.git
 cd web-scraping-demos
-   ```
-
-2. Install dependencies:
-```bash
 pip install -r requirements.txt
 ```
 
-## Scripts
+run the AliExpress scraper:
+```bash
+python python -m aliexpress
+```
 
-[Aliexpress](aliexpress/aliexpress.md)
+---
+
+
+
+## Available Scrapers
+- [AliExpress Scrapper](#aliexpress-scrapper)
+  - Scrapes product name, price, URL, seller specs.
+
+---
+
+
+## Detailed Scraper Sections
+
+###  AliExpress Scrapper
+**Scrapes AliExpress search results for product and seller data**
+
+#### What it does
+1. Launches Selenium ChromeDriver with configurable headless mode, user-agent, window size.
+2. Loads search results (e.g., "laptops"), scrolls to fetch all product cards.
+3. Extracts `product_name`, `price`, and `url` from each card.
+4. Resolves captchas manually. 
+4. Visits each product page; hovers seller-info popup to scrape seller's info
+5. Outputs a structured CSV.
+
+#### Analysis & Results
+- **CSV:** `results/aliexpress.csv` with columns: `product_name`, `price`, `url`, `seller_info`.
+- **Notebook:** `notebooks/aliexpress_analysis.ipynb`:
+  - Buckets prices into ranges (0–50, 51–100, 101–200, 200+).
+  - Computes count.
+  - Plots distribution chart.
+
+![](media/aliexpress_excel.png)
+![](media/aliexpress_console.png)
+![](media/range_prices_plot.png)
+
+## Links & Contact
+- **CSV Outputs:** [Results folder](https://github.com/Kikve/web-scraping-demos/tree/main/documents)
+- **Notebooks:**
+  - [AliExpress Analysis](https://github.com/Kikve/web-scraping-demos/tree/main/notebooks)
+- **Repo:** https://github.com/you/web-scraping-demos
+- **Contact:** enriquevh.dev@gmail.com 
