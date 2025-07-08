@@ -1,6 +1,8 @@
 # Web-Scraping-Demos
 
 [![Python](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/)
+
+
 Web-Scraping-Demos is a collection of Python scripts and notebooks that demonstrate how to extract, parse and process data from modern websites. Whether you’re dealing with static HTML, JavaScript‐rendered pages or large-scale crawls, you’ll find working examples that you can adapt to your own projects.
 
 
