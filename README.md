@@ -53,13 +53,14 @@ python python -m aliexpress
 
 
 <div align="center">
-  <img src="media/aliexpress_console.png" width="450">
-  <img src="media/aliexpress_excel.png"  width="450">
+  <img src="media/aliexpress_console.png" width="650">
+  <img src="media/aliexpress_excel.png"  width="650">
 </div>
 
 <div align="center">
   <img src="media/range_prices_plot.png" width="650" alt="Plot"/>
 </div>
+
 ## Links & Contact
 - **CSV Outputs:** [Results folder](https://github.com/Kikve/web-scraping-demos/tree/main/documents)
 - **Notebooks:**
