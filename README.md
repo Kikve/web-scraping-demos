@@ -47,24 +47,15 @@ python python -m aliexpress
 ##  AliExpress Scrapper
 **Scrapes AliExpress search results for product and seller data**
 
-### What it does
-1. Launches Selenium ChromeDriver with configurable headless mode, user-agent, window size.
-2. Loads search results (e.g., "laptops"), scrolls to fetch all product cards.
-3. Extracts `product_name`, `price`, and `url` from each card.
-4. Resolves captchas manually. 
-4. Visits each product page; hovers seller-info popup to scrape seller's info
-5. Outputs a structured CSV.
+1. Launch headless Chrome → infinite-scroll all cards  
+2. Parse product name, price, link, seller rating  
+3. Save to `results/aliexpress.csv`
+4. Analysis and plot of prices.
 
-### Analysis & Results
-- **CSV:** `results/aliexpress.csv` with columns: `product_name`, `price`, `url`, `seller_info`.
-- **Notebook:** `notebooks/aliexpress_analysis.ipynb`:
-  - Buckets prices into ranges (0–50, 51–100, 101–200, 200+).
-  - Computes count.
-  - Plots distribution chart.
 
 <div align="center">
-  <img src="media/aliexpress_console.png" width="280">
-  <img src="media/aliexpress_excel.png"  width="280">
+  <img src="media/aliexpress_console.png" width="580">
+  <img src="media/aliexpress_excel.png"  width="580">
 </div>
 
 ## Links & Contact
