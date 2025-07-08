@@ -1,9 +1,7 @@
 # Web-Scraping-Demos
 
-Web-Scraping-Demos is a collection of Python scripts and notebooks that demonstrate how to extract, parse and process data from modern websites. Whether you’re dealing with static HTML, JavaScript‐rendered pages or large-scale crawls, you’ll find working examples that you can adapt to your own projects.
 [![Python](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/)
-[![Build Status](https://github.com/you/web-scraping-demos/actions/workflows/ci.yml/badge.svg)](https://github.com/you/web-scraping-demos/actions) 
-[![Coverage](https://img.shields.io/codecov/c/github/you/web-scraping-demos)](https://codecov.io/gh/you/web-scraping-demos)
+Web-Scraping-Demos is a collection of Python scripts and notebooks that demonstrate how to extract, parse and process data from modern websites. Whether you’re dealing with static HTML, JavaScript‐rendered pages or large-scale crawls, you’ll find working examples that you can adapt to your own projects.
 
 
 ## Table of Contents
@@ -58,13 +56,13 @@ python python -m aliexpress
   - Computes count.
   - Plots distribution chart.
 
-![](media/aliexpress_excel.png)
-![](media/aliexpress_console.png)
-![](media/range_prices_plot.png)
+![](media/aliexpress_excel.png){width=50%}
+![](media/aliexpress_console.png){width=50%}
+![](media/range_prices_plot.png){width=50%}
 
 ## Links & Contact
 - **CSV Outputs:** [Results folder](https://github.com/Kikve/web-scraping-demos/tree/main/documents)
 - **Notebooks:**
   - [AliExpress Analysis](https://github.com/Kikve/web-scraping-demos/tree/main/notebooks)
-- **Repo:** https://github.com/you/web-scraping-demos
+- **Repo:** https://github.com/Kikve/web-scraping-demos
 - **Contact:** enriquevh.dev@gmail.com 
