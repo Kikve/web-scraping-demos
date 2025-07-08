@@ -58,7 +58,7 @@ python python -m aliexpress
 </div>
 
 <div align="center">
-  <img src="media/range_prices_plot.png" width="650" alt="Plot"/>
+  <img src="media/range_prices_plot.png" width="450" alt="Plot"/>
 </div>
 
 ## Links & Contact
